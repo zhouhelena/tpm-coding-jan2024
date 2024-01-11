@@ -27,13 +27,4 @@ if __name__ == "__main__":
 	)
 	feature_builder.featurize(col="message")
 
-	# Tiny CSOP
-	tiny_csop_feature_builder = FeatureBuilder(
-		input_file_path = "../feature_engine/data/raw_data/csop_conversations_TINY.csv",
-		output_file_path_chat_level = "../feature_engine/output/chat/csop_TINY_output_chat_level.csv",
-		turns = True,
-		analyze_first_pct = [1]
-	)
-	tiny_csop_feature_builder.featurize(col="message")
-
 	
