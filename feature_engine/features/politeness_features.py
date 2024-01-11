@@ -13,4 +13,4 @@ including HASHEDGE, Factuality, Deference, Gratitude, Apologizing, etc.
 def get_politeness_strategies(text):
  
      "@TODO : Add your Implementation of the feature here! Good Luck :) "
-    
+

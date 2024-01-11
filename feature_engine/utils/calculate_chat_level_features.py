@@ -10,7 +10,6 @@ The steps needed to add a feature would be to:
   to the chat level dataframe as columns.
 - Call the feature defining function in the driver function.
 """
-import re
 # Importing modules from features
 from features.politeness_features import *
 from features.basic_features import *
@@ -55,7 +54,9 @@ class ChatLevelFeaturesCalculator:
             This function is used to implement the common text based featuers.
         """
         # Count Words
-        self.chat_data["num_words"] = self.chat_data["message"].apply(count_words)
+        '''
+        @TODO: Call your count_words() function here!
+        '''
 
     
     def other_lexical_features(self) -> None:
@@ -65,16 +66,17 @@ class ChatLevelFeaturesCalculator:
             (see features/other_LIWC_features.py to learn more about how these features are calculated)
         """
         
-        # Calculate the word type-to-token ratio
-        self.chat_data["word_TTR"] = self.chat_data["message"].apply(get_word_TTR)
+        '''
+        @TODO: Call your get_word_TTR() function here!
+        '''
 
 
     def calculate_politeness_sentiment(self) -> None:
         """
         This function calls the Politeness module from Convokit and includes all outputted features.
         """
-        transformed_df = self.chat_data['message'].apply(get_politeness_strategies).apply(pd.Series)
-        transformed_df = transformed_df.rename(columns=lambda x: re.sub('^feature_politeness_==()','',x)[:-2].lower())
-
-        # Concatenate the transformed dataframe with the original dataframe
-        self.chat_data = pd.concat([self.chat_data, transformed_df], axis=1)
+        
+        '''
+        @TODO: Call your get_politeness_strategies() function here! 
+        PS: Don't forget to appropriately process your output!
+        '''
