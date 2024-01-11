@@ -13,23 +13,6 @@ Returns the number of words in a message.
 """
 def count_words(text):
 	"""Counts the number of words in the chat."""
-	return len(text.split())
+	"@TODO : Add your Implementation of the feature here! Good Luck :) "
 
-"""
-function: count_characters
-
-Returns the number of characters in a message.
-"""
-def count_characters(text):
-	"""Counts the number of words in the chat."""
-	return len(str(text))
-
-
-"""
-function: count_messages
-
-This is trivial; by definition, each message counts as 1.
-(Useful for grouping later.)
-"""
-def count_messages(text):
-	return(1)
+	return 0
