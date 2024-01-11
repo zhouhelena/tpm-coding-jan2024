@@ -10,7 +10,7 @@ The steps needed to add a feature would be to:
   to the chat level dataframe as columns.
 - Call the feature defining function in the driver function.
 """
-
+import re
 # Importing modules from features
 from features.politeness_features import *
 from features.basic_features import *
@@ -18,7 +18,7 @@ from features.other_lexical_features import *
 
 
 class ChatLevelFeaturesCalculator:
-    def __init__(self, chat_data: pd.DataFrame, vect_data: pd.DataFrame, bert_sentiment_data: pd.DataFrame) -> None:
+    def __init__(self, chat_data: pd.DataFrame) -> None:
         """
             This function is used to initialize variables and objects that can be used by all functions of this class.
 

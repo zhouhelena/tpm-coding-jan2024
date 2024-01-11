@@ -23,7 +23,7 @@ if __name__ == "__main__":
 		input_file_path = "../feature_engine/data/raw_data/juries_tiny_for_testing.csv",
 		output_file_path_chat_level = "../feature_engine/output/chat/jury_TINY_output_chat_level.csv",
 		turns = False,
-		analyze_first_pct = [0.25, 0.5, 0.75, 1]
+		analyze_first_pct = [1]
 	)
 	feature_builder.featurize(col="message")
 
@@ -32,7 +32,7 @@ if __name__ == "__main__":
 		input_file_path = "../feature_engine/data/raw_data/csop_conversations_TINY.csv",
 		output_file_path_chat_level = "../feature_engine/output/chat/csop_TINY_output_chat_level.csv",
 		turns = True,
-		analyze_first_pct = [0.25, 0.5, 0.75, 1]
+		analyze_first_pct = [1]
 	)
 	tiny_csop_feature_builder.featurize(col="message")
 

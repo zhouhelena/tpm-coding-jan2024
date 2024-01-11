@@ -106,7 +106,6 @@ class FeatureBuilder:
             
             # Step 4. Write the feartures into the files defined in the output paths.
             print("All Done!")
-            self.save_features()
 
     def preprocess_chat_data(self, col: str="message", turns=False) -> None:
         """
@@ -144,7 +143,8 @@ class FeatureBuilder:
         self.chat_data = chat_feature_builder.calculate_chat_level_features()
         # Remove special characters in column names
         self.chat_data.columns = ["".join(c for c in col if c.isalnum() or c == '_') for col in self.chat_data.columns]
-
+        self.chat_data.to_csv(self.output_file_path_chat_level, index=False)
+        
     def get_first_pct_of_chat(self, percentage) -> None:
         """
             This function truncates each conversation to the first X% of rows.
