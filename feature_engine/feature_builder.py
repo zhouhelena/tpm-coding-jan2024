@@ -22,7 +22,6 @@ from pathlib import Path
 # from utils.summarize_chat_level_features import *
 from utils.calculate_chat_level_features import ChatLevelFeaturesCalculator
 from utils.preprocess import *
-from utils.check_embeddings import *
 
 class FeatureBuilder:
     def __init__(
@@ -30,7 +29,7 @@ class FeatureBuilder:
             input_file_path: str, 
             output_file_path_chat_level: str, 
             analyze_first_pct: list = [1.0], 
-            turns: bool=True
+            turns: bool=False
         ) -> None:
         """
             This function is used to define variables used throughout the class.
@@ -66,7 +65,7 @@ class FeatureBuilder:
         self.input_columns = self.chat_data.columns
 
         # Set all paths for vector retrieval (contingent on turns)
-        self.output_file_path_chat_level = re.sub('chat', 'turn', output_file_path_chat_level) if self.turns else output_file_path_chat_level
+        self.output_file_path_chat_level = re.sub('chat', 'turn', output_file_path_chat_level) if self.turns else output_file_path_chat_level 
 
     def featurize(self, col: str="message") -> None:
         """
@@ -144,7 +143,7 @@ class FeatureBuilder:
         # Remove special characters in column names
         self.chat_data.columns = ["".join(c for c in col if c.isalnum() or c == '_') for col in self.chat_data.columns]
         self.chat_data.to_csv(self.output_file_path_chat_level, index=False)
-        
+
     def get_first_pct_of_chat(self, percentage) -> None:
         """
             This function truncates each conversation to the first X% of rows.
