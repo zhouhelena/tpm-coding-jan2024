@@ -1,6 +1,4 @@
 
-import pandas as pd
-
 '''
 function: politeness_features
 (Chat-level function)

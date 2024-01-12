@@ -10,6 +10,7 @@ The steps needed to add a feature would be to:
   to the chat level dataframe as columns.
 - Call the feature defining function in the driver function.
 """
+import pandas as pd
 # Importing modules from features
 from features.politeness_features import *
 from features.basic_features import *
