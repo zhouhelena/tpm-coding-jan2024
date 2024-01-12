@@ -15,7 +15,7 @@ To complete this assignment, you will need to modify 4 different files:
 At the end of Part 2, we will need the following:
 - A link to your GitHub cloned repository. This should contain:
   1. Your Python code;
-  2. Your Part 2 Reflection.
+  2. Your Part 2 Reflection (directly edit this README!).
 - A copy of your chat-level CSV that contains columns for the features you generated. **Note: this should be reproducible!** We should be able to get the same results by running your code from the GitHub link you submit.
 
 # Part 2 Reflection
