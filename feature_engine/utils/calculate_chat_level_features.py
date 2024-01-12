@@ -11,11 +11,10 @@ The steps needed to add a feature would be to:
 - Call the feature defining function in the driver function.
 """
 import pandas as pd
-# Importing modules from features
+# Importing features
 from features.politeness_features import *
-from features.basic_features import *
-from features.other_lexical_features import *
-
+from features.word_count import *
+from features.type_token_ratio import *
 
 class ChatLevelFeaturesCalculator:
     def __init__(self, chat_data: pd.DataFrame) -> None:
@@ -25,8 +24,6 @@ class ChatLevelFeaturesCalculator:
         PARAMETERS:
             @param chat_data (pd.DataFrame): This is a pandas dataframe of the chat level features read in from the input dataset.
         """
-        # print(f'this is the length{len(chat_data)}')
-        # print(chat_data.tail(1))
         self.chat_data = chat_data
 
     def calculate_chat_level_features(self) -> pd.DataFrame:
@@ -37,47 +34,34 @@ class ChatLevelFeaturesCalculator:
             (pd.DataFrame): The chat level dataset given to this class during initialization along with 
                             new columns for each chat level feature.
         """
-        
-        # Text-Based Basic Features
-        self.text_based_features()
-
-        # Other lexical features
-        self.other_lexical_features()
-
-        # Politeness (ConvoKit)
-        self.calculate_politeness_sentiment()
+    
+        self.apply_word_count()
+        self.apply_word_ttr()
+        self.apply_politeness()
 
         # Return the input dataset with the chat level features appended (as columns)
         return self.chat_data
 
-    def text_based_features(self) -> None:
+    def apply_word_count(self) -> None:
         """
-            This function is used to implement the common text based featuers.
+            This function calls the function that counts the number of words in a message.
         """
         # Count Words
-        '''
-        @TODO: Call your count_words() function here!
-        '''
-
+        self.chat_data["num_words"] = self.chat_data["message"].apply(count_words)
     
-    def other_lexical_features(self) -> None:
+    def apply_word_ttr(self) -> None:
         """
-            This function extract the number of questions, classify whether the message contains clarification questions,
-            calculate the word type-to-token ratio, and the proportion of first person pronouns from the chats
-            (see features/other_LIWC_features.py to learn more about how these features are calculated)
+            This function calls the function that calculates the word type-to-token ratio.
         """
+        self.chat_data["word_TTR"] = self.chat_data["message"].apply(get_word_TTR)
         
-        '''
-        @TODO: Call your get_word_TTR() function here!
-        '''
-
-
-    def calculate_politeness_sentiment(self) -> None:
+    def apply_politeness(self) -> None:
         """
         This function calls the Politeness module from Convokit and includes all outputted features.
         """
         
         '''
         @TODO: Call your get_politeness_strategies() function here! 
-        PS: Don't forget to appropriately process your output!
+        P.S.: Don't forget to appropriately process your output!
         '''
+        pass

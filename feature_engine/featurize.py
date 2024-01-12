@@ -15,13 +15,8 @@ if __name__ == "__main__":
 	# Instantiating the Feature Generating Class
 	# Calling the "engine"/"driver" function of the FeatureBuilder class 
 	# that creates the features, and writes them in output.
-	# Defines one class for each dataset.
-
 	csopII_feature_builder = FeatureBuilder(
 		input_file_path = "../feature_engine/data/raw_data/csopII_conversations_withblanks.csv",
 		output_file_path_chat_level = "../feature_engine/output/chat/csopII_output_chat_level.csv"
 	)
-
 	csopII_feature_builder.featurize(col="message")
-
-	
