@@ -14,7 +14,19 @@ The output of this function should be a number (specifically, a float).
 Example: “Please, oh please can I go to the ball?” → 8 / 9 → 0.889
 """
 def get_word_TTR(text):
-	'''
-	@TODO : Add your Implementation of the feature here! Good Luck :)
-	'''
-	return 0
+    text = text.strip()
+    text = text.replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
+    text = re.sub(r'[^\w\s]', '', text)
+    words = [word.lower() for word in text.split()]
+
+    unique_words = len(set(words))
+    total_words = len(words)
+
+    if total_words > 0:
+        ttr = unique_words / total_words
+    else:
+        ttr = 0  
+
+    return ttr
+
+# print(get_word_TTR("hi hi hi hi hi")) 

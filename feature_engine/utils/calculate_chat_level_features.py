@@ -59,9 +59,12 @@ class ChatLevelFeaturesCalculator:
         """
         This function calls the Politeness module from Convokit and includes all outputted features.
         """
+        politeness_features_list = []
+
+        for text in self.chat_data["message"]:
+            politeness_features = get_politeness_strategies(text)
+            politeness_features_list.append(politeness_features)
         
-        '''
-        @TODO: Call your get_politeness_strategies() function here! 
-        P.S.: Don't forget to appropriately process your output!
-        '''
-        pass
+        politeness_features_df = pd.concat(politeness_features_list, ignore_index=True)
+        
+        self.chat_data = pd.concat([self.chat_data, politeness_features_df], axis=1)
